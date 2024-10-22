@@ -14,8 +14,6 @@ class Enemy {
         this.image = new Image();
         this.image.src = "enemy1.png";
         
-        
-        this.speed = Math.random() * 4 -2;
         this.spriteWidth = 293;
         this.spriteHeight = 155;
 
@@ -30,8 +28,9 @@ class Enemy {
         this.y = Math.random() * (canvas.height -this.height) ;
     }
         update() {
-        this.x += this.speed;
-        this.y += this.speed;
+        this.x += Math.random() * 5 - 2.5;
+        this.y += Math.random() * 5 - 2.5;
+        
             if(gameFrame % this.flapSpeed === 0) this.frame > 4 ? this.frame = 0: this.frame++;
         }
 
