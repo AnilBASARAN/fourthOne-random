@@ -13,8 +13,7 @@ class Enemy {
     constructor() {
         this.image = new Image();
         this.image.src = "enemy1.png";
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
+        
         
         this.speed = Math.random() * 4 -2;
         this.spriteWidth = 293;
@@ -25,6 +24,10 @@ class Enemy {
 
         this.frame = 0;
         this.flapSpeed = Math.floor(Math.random() *3 + 1);
+
+        
+        this.x = Math.random() * (canvas.width -this.width) ;
+        this.y = Math.random() * (canvas.height -this.height) ;
     }
         update() {
         this.x += this.speed;
