@@ -3,7 +3,7 @@ const canvas = document.getElementById("canvas1");
 const ctx = canvas.getContext("2d");
 const CANVAS_WIDTH = canvas.width = 500;
 const CANVAS_HEIGHT = canvas.height = 1000;
-const numberOfEnemies = 100;
+const numberOfEnemies = 20;
 let enemiesArray = [];
 
 
@@ -13,22 +13,31 @@ class Enemy {
     constructor() {
         this.image = new Image();
         this.image.src = "enemy2.png";
-        
+        this.speed = Math.random() * 4 + 1;
         this.spriteWidth = 266;
         this.spriteHeight = 188;
-        this.speed = Math.random() * 4 + 1;
+        
         this.height = this.spriteHeight/2.5;
         this.width = this.spriteWidth/2.5;
 
-        this.frame = 0;
-        this.flapSpeed = Math.floor(Math.random() *3 + 1);
-
-        
         this.x = Math.random() * (canvas.width -this.width) ;
         this.y = Math.random() * (canvas.height -this.height) ;
+
+        this.frame = 0;
+
+        this.flapSpeed = Math.floor(Math.random() *3 + 1);
+
+        this.angle = 0;
+
+        this.angleSpeed = Math.random() * 0.2;
+
+        
+        
     }
         update() {
         this.x -= this.speed
+        this.y += 10 * Math.sin(this.angle);
+        this.angle += this.angleSpeed;
         // endless flying
         if(this.x + this.width < 0) this.x = canvas.width;
         
