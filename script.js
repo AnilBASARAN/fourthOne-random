@@ -12,11 +12,11 @@ let gameFrame = 0;
 class Enemy {
     constructor() {
         this.image = new Image();
-        this.image.src = "enemy1.png";
+        this.image.src = "enemy2.png";
         
-        this.spriteWidth = 293;
-        this.spriteHeight = 155;
-
+        this.spriteWidth = 266;
+        this.spriteHeight = 188;
+        this.speed = Math.random() * 4 + 1;
         this.height = this.spriteHeight/2.5;
         this.width = this.spriteWidth/2.5;
 
@@ -28,8 +28,9 @@ class Enemy {
         this.y = Math.random() * (canvas.height -this.height) ;
     }
         update() {
-        this.x += Math.random() * 5 - 2.5;
-        this.y += Math.random() * 5 - 2.5;
+        this.x -= this.speed
+        // endless flying
+        if(this.x + this.width < 0) this.x = canvas.width;
         
             if(gameFrame % this.flapSpeed === 0) this.frame > 4 ? this.frame = 0: this.frame++;
         }
