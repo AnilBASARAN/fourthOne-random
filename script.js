@@ -31,12 +31,12 @@ class Enemy {
 
         this.angleSpeed = Math.random() * 0.2;
 
-        
+        this.curve = Math.random() * 7;
         
     }
         update() {
         this.x -= this.speed
-        this.y += 10 * Math.sin(this.angle);
+        this.y += this.curve * Math.sin(this.angle);
         this.angle += this.angleSpeed;
         // endless flying
         if(this.x + this.width < 0) this.x = canvas.width;
